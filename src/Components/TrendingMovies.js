@@ -10,7 +10,7 @@ const MovieList = styled.main`
 	margin: 5px auto;
 `;
 
-const PopularMovies = ({ movies, children }) => {
+const TrendingMovies = ({ movies, children }) => {
 	// const [movies, setMovies] = useState([]);
 	// useEffect(() => {
 	// 	fetch(
@@ -33,6 +33,6 @@ const PopularMovies = ({ movies, children }) => {
 };
 
 export default withMovies(
-	PopularMovies,
+	TrendingMovies,
 	"https://api.themoviedb.org/3/movie/popular?api_key=d114dfa16205db06cd554385efbfa351&language=en-US&page=1"
 );

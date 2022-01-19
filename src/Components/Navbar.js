@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { useContext } from "react";
+import { AppContext } from "../Context/AppContext";
 const Nav = styled.nav`
 	background-color: ${({ theme }) => theme.colors.primary};
 	color: white;
@@ -21,14 +22,14 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
+	const { searchHandler, search } = useContext(AppContext);
 	return (
 		<Nav>
 			<ul>
 				<li className="logo">MovieDB</li>
 				<li>
 					<form>
-						<input />
-						<button>Search</button>
+						<input type={"text"} value={search} onChange={searchHandler} />
 					</form>
 				</li>
 			</ul>

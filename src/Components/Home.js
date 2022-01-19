@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../Context/AppContext";
+
 const Home = () => {
-	return <main></main>;
+	const { search, searchMovies } = useContext(AppContext);
+	return (
+		<main>
+			{search ? searchMovies.map((movie) => <div>{movie.title}</div>) : ""}
+		</main>
+	);
 };
 
 export default Home;
