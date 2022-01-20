@@ -9,7 +9,7 @@ export const MovieList = styled.main`
 	max-width: 1500px;
 	margin: 5px auto;
 `;
-function withMovies(WrappedComponent, url) {
+function withMovies(WrappedComponent, pageTitle, url) {
 	return class extends React.Component {
 		constructor(props) {
 			super(props);
@@ -22,12 +22,10 @@ function withMovies(WrappedComponent, url) {
 				const fetchMovies = async () => {
 					await fetch(url)
 						.then((result) => {
-							console.log("result", result);
 							return result.json();
 						})
 						.then((data) => {
 							this.setState({ ...this.state, movies: data.results });
-							console.log("data:", data);
 						})
 						.catch((err) => {
 							console.log(err);
@@ -39,6 +37,7 @@ function withMovies(WrappedComponent, url) {
 		render() {
 			return (
 				<WrappedComponent>
+					<h2>{pageTitle}</h2>
 					<MovieList>
 						{this.state.movies.length > 0
 							? this.state.movies.map((movie) => (

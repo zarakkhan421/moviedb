@@ -7,5 +7,6 @@ const PopularMovies = ({ movies, children }) => {
 
 export default withMovies(
 	PopularMovies,
+	"Popular Movies",
 	"https://api.themoviedb.org/3/movie/popular?api_key=d114dfa16205db06cd554385efbfa351&language=en-US&page=1"
 );

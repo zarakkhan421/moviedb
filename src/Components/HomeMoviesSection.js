@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Section = styled.section`
 	display: flex;
@@ -10,8 +11,6 @@ const Section = styled.section`
 		justify-content: space-between;
 		gap: 5px;
 		.section-item {
-			/* background-color: red; */
-			/* width: 100px; */
 			h2 {
 				font-size: 1rem;
 			}
@@ -24,7 +23,7 @@ const Section = styled.section`
 	}
 `;
 
-const HomeMoviesSection = ({ sectionName, url }) => {
+const HomeMoviesSection = ({ sectionName, link, url }) => {
 	const [movies, setMovies] = useState([]);
 	useEffect(() => {
 		fetch(url)
@@ -38,16 +37,17 @@ const HomeMoviesSection = ({ sectionName, url }) => {
 		<Section>
 			<h2>{sectionName}</h2>
 			<div className="section-list">
-				{movies.slice(0, 5).map((movie, index) => (
+				{movies.slice(0, 5).map((movie) => (
 					<div className="section-item" key={movie.id}>
 						<img
 							src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 							alt={movie.title}
-						/>{" "}
+						/>
 						<h2>{movie.title}</h2>
 					</div>
 				))}
 			</div>
+			<Link to={`/${link}`}>See More</Link>
 		</Section>
 	);
 };

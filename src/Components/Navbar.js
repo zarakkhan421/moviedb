@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
+import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Nav = styled.nav`
 	background-color: ${({ theme }) => theme.colors.primary};
 	color: white;
@@ -22,15 +24,16 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-	const { searchHandler, search } = useContext(AppContext);
+	const { searchHandler, search, fetchMovies } = useContext(AppContext);
 	return (
 		<Nav>
 			<ul>
-				<li className="logo">MovieDB</li>
+				<li className="logo">
+					<Link to="/">MovieDB</Link>
+				</li>
 				<li>
-					<form>
-						<input type={"text"} value={search} onChange={searchHandler} />
-					</form>
+					<input type={"text"} value={search} onChange={searchHandler} />
+					<BsSearch onClick={fetchMovies} />
 				</li>
 			</ul>
 		</Nav>
