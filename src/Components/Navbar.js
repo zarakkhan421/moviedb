@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
-import { BsSearch } from "react-icons/bs";
+import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 const Nav = styled.nav`
 	background-color: ${({ theme }) => theme.colors.primary};
@@ -19,6 +19,26 @@ const Nav = styled.nav`
 		.logo {
 			font-weight: 500;
 			font-size: 1.5rem;
+			padding: 5px 0;
+			a {
+				color: white;
+			}
+		}
+		.search-box {
+			display: flex;
+			align-items: center;
+			input {
+				margin-right: 10px;
+				border: unset;
+				outline: none;
+				padding: 7.5px 10px;
+				border-radius: 5px;
+			}
+			svg {
+				width: 2.5rem;
+				height: 2.5rem;
+				margin-top: 5px;
+			}
 		}
 	}
 `;
@@ -31,9 +51,9 @@ const Navbar = () => {
 				<li className="logo">
 					<Link to="/">MovieDB</Link>
 				</li>
-				<li>
+				<li className="search-box">
 					<input type={"text"} value={search} onChange={searchHandler} />
-					<BsSearch onClick={fetchMovies} />
+					<BiSearch onClick={fetchMovies} />
 				</li>
 			</ul>
 		</Nav>

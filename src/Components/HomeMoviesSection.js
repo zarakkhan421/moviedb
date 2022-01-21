@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { AiFillStar } from "react-icons/ai";
 const Section = styled.section`
 	display: flex;
 	flex-direction: column;
-	margin: 5px 40px;
+	margin: 10px 40px;
+	h2 {
+		margin: 5px 0;
+	}
 	.section-list {
 		display: flex;
 		justify-content: space-between;
@@ -19,6 +22,21 @@ const Section = styled.section`
 				height: auto;
 				object-fit: cover;
 			}
+			h2 {
+				margin: 5px 0;
+			}
+			.meta {
+				.ratings {
+					display: flex;
+					align-items: center;
+					svg {
+						margin-right: 5px;
+					}
+					span {
+						margin-top: 2px;
+					}
+				}
+			}
 		}
 	}
 `;
@@ -29,8 +47,8 @@ const HomeMoviesSection = ({ sectionName, link, url }) => {
 		fetch(url)
 			.then((result) => result.json())
 			.then((data) => {
-				console.log(data);
 				setMovies(data.results);
+				console.log(data.results);
 			});
 	}, [url]);
 	return (
@@ -44,6 +62,12 @@ const HomeMoviesSection = ({ sectionName, link, url }) => {
 							alt={movie.title}
 						/>
 						<h2>{movie.title}</h2>
+						<div className="meta">
+							<span className="ratings">
+								<AiFillStar />
+								<span>{movie.vote_average}</span>
+							</span>
+						</div>
 					</div>
 				))}
 			</div>

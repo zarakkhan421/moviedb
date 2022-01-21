@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { AiFillStar } from "react-icons/ai";
 const MovieCard = styled.article`
 	display: flex;
 	flex-direction: column;
@@ -13,8 +13,15 @@ const MovieCard = styled.article`
 		margin: 5px 0;
 	}
 	.meta {
-		span {
-			margin-right: 10px;
+		.ratings {
+			display: flex;
+			align-items: center;
+			svg {
+				margin-right: 5px;
+			}
+			span {
+				margin-top: 2px;
+			}
 		}
 	}
 `;
@@ -28,9 +35,10 @@ const Movie = ({ movie }) => {
 			/>
 			<h3>{movie.title}</h3>
 			<div className="meta">
-				<span>{movie.vote_average}</span>
-
-				<span>{movie.release_date}</span>
+				<span className="ratings">
+					<AiFillStar />
+					<span>{movie.vote_average}</span>
+				</span>
 			</div>
 		</MovieCard>
 	);
