@@ -2,67 +2,109 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+const MovieDetails = styled.article`
+	display: flex;
+	justify-content: center;
+	.overlay {
+		width: calc(500 * 3.5px);
+		height: calc(281 * 3.5px);
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.backdrop {
+		width: calc(500 * 3.5px);
+		height: calc(281 * 3.5px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.movie-content {
+		display: flex;
+		width: calc(500 * 3px);
+		height: calc(281 * 3px);
+		align-items: center;
+		justify-content: space-evenly;
+		column-gap: 20px;
+		.poster {
+			img {
+				width: 380px;
+				height: auto;
+				object-fit: cover;
+				border-radius: 5px;
+			}
+		}
+		.details {
+			background-color: rgba(255, 255, 255, 0.8);
+			border-radius: 5px;
+			padding: 20px;
+			width: 900px;
+			.meta {
+				display: flex;
+				.meta-item {
+					display: flex;
+				}
+			}
+			.overview {
+			}
+			.cast {
+				height: 400px;
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				overflow-y: scroll;
+				scrollbar-color: rebeccapurple green;
+				scrollbar-width: thin;
+				::-webkit-scrollbar {
+					width: 10px;
+				}
 
+				::-webkit-scrollbar-track {
+					box-shadow: inset 0 0 1.5px ${({ theme }) => theme.colors.primary};
+					border-radius: 10px;
+				}
+
+				::-webkit-scrollbar-thumb {
+					background: ${({ theme }) => theme.colors.primary};
+					border-radius: 10px;
+				}
+
+				::-webkit-scrollbar-thumb:hover {
+					background: ${({ theme }) => theme.colors.primaryHover};
+				}
+				.cast-item {
+					display: flex;
+					flex-direction: column;
+					.image {
+						img {
+							width: 100px;
+							height: auto;
+							object-fit: cover;
+							border-radius: 5px;
+						}
+					}
+					.actor {
+						font-weight: 600;
+						word-break: break-all;
+					}
+					.character {
+						font-size: 0.85rem;
+						font-style: italic;
+						width: 100px;
+						word-break: break-all;
+					}
+				}
+			}
+		}
+	}
+`;
 const SingleMoviePage = () => {
 	let params = useParams();
 	const [movie, setMovie] = useState([]);
 	const [movieCasts, setMovieCasts] = useState([]);
 	const movie_id = params.id;
 	console.log(movie_id);
-	const MovieDetails = styled.article`
-		display: flex;
-		justify-content: center;
-		.overlay {
-			width: calc(500 * 2px);
-			height: calc(281 * 2px);
-			background-color: rgba(0, 0, 0, 0.6);
-		}
-		.backdrop {
-			background-image: url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}");
-			background-repeat: no-repeat;
-			background-size: cover;
-			width: calc(500 * 2px);
-			height: calc(281 * 2px);
-		}
-		.movie-content {
-			display: flex;
-			width: calc(500 * 2px);
-			height: calc(281 * 2px);
-			align-items: center;
-			justify-content: space-evenly;
-			.poster {
-				img {
-					width: 250px;
-					height: auto;
-					object-fit: cover;
-				}
-			}
-			.details {
-				background-color: rgba(255, 255, 255, 0.3);
-				.meta {
-					display: flex;
-					.meta-item {
-						display: flex;
-					}
-				}
-				.overview {
-				}
-				.cast {
-					display: grid;
-					grid-template-columns: repeat(6, 1fr);
-					.cast-item {
-						.image {
-							img {
-								width: 50px;
-								height: auto;
-								object-fit: cover;
-							}
-						}
-					}
-				}
-			}
-		}
-	`;
+
 	useEffect(() => {
 		fetch(
 			`https://api.themoviedb.org/3/movie/${movie_id}?api_key=d114dfa16205db06cd554385efbfa351&language=en-US`
@@ -85,7 +127,14 @@ const SingleMoviePage = () => {
 	return (
 		<main>
 			<MovieDetails>
-				<div className="backdrop">
+				<div
+					className="backdrop"
+					style={{
+						backgroundImage: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`,
+						backgroundRepeat: "no-repeat",
+						backgroundSize: "contain",
+					}}
+				>
 					<div className="overlay">
 						<div className="movie-content">
 							<div className="poster">
@@ -130,7 +179,8 @@ const SingleMoviePage = () => {
 																alt={movie.title}
 															/>
 														</div>
-														<div>{cast.name}</div>
+														<div className="actor">{cast.name}</div>
+														<div className="character">{cast.character}</div>
 													</div>
 												))
 										: "not found"}

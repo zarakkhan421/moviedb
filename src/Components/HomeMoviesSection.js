@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
+import Movie from "./Movie";
 const Section = styled.section`
-	display: flex;
+	.movie-list {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	/* display: flex;
 	flex-direction: column;
 	margin: 10px 40px;
 	h2 {
@@ -38,6 +44,10 @@ const Section = styled.section`
 				}
 			}
 		}
+	} */
+	.see-more {
+		margin-top: 5px;
+		font-size: 1.25rem;
 	}
 `;
 
@@ -54,24 +64,35 @@ const HomeMoviesSection = ({ sectionName, link, url }) => {
 	return (
 		<Section>
 			<h2>{sectionName}</h2>
-			<div className="section-list">
+			<div className="movie-list">
 				{movies.slice(0, 5).map((movie) => (
-					<div className="section-item" key={movie.id}>
-						<img
-							src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-							alt={movie.title}
-						/>
-						<h2>{movie.title}</h2>
-						<div className="meta">
-							<span className="ratings">
-								<AiFillStar />
-								<span>{movie.vote_average}</span>
-							</span>
-						</div>
-					</div>
+					<Movie movie={movie} />
 				))}
 			</div>
-			<Link to={`/${link}`}>See More</Link>
+			{/* <h2>{sectionName}</h2>
+			<div className="section-list">
+				{movies.slice(0, 5).map((movie) => (
+					<Link to={`/movie/${movie.id}`}>
+						<div className="section-item" key={movie.id}>
+							<img
+								src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+								alt={movie.title}
+							/>
+							<h2>{movie.title}</h2>
+							<div className="meta">
+								<span className="ratings">
+									<AiFillStar />
+									<span>{movie.vote_average}</span>
+								</span>
+							</div>
+						</div>
+					</Link>
+				))}
+			</div> */}
+
+			<Link to={`/${link}`} className="see-more">
+				See More
+			</Link>
 		</Section>
 	);
 };

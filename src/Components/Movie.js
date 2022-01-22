@@ -19,6 +19,7 @@ const MovieCard = styled.article`
 			align-items: center;
 			svg {
 				margin-right: 5px;
+				color: #e0ce82;
 			}
 			span {
 				margin-top: 2px;

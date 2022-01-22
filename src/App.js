@@ -14,11 +14,18 @@ import SingleMoviePage from "./Pages/SingleMoviePage";
 const theme = {
 	colors: {
 		primary: "#9F0039",
+		primaryHover: "#ab003d",
+	},
+	width: {
+		maxWidth: "1500px",
 	},
 };
 const GlobalStyle = createGlobalStyle`
 body{
 	font-family: 'Roboto', sans-serif;
+	a{
+		color: black;
+	}
 }
 `;
 function App() {

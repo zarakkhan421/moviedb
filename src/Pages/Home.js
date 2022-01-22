@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import HomeMoviesSection from "../Components/HomeMoviesSection";
 
 const HomeSection = styled.main`
-	max-width: 1500px;
+	max-width: ${({ theme }) => theme.width.maxWidth};
 	margin: 5px auto;
 `;
 
