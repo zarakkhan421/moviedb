@@ -11,6 +11,7 @@ import { createGlobalStyle } from "styled-components";
 import TopRatedMovies from "./Pages/TopRatedMovies";
 import UpCommingMovies from "./Pages/UpCommingMovies";
 import SingleMoviePage from "./Pages/SingleMoviePage";
+import NotFound from "./Pages/NotFound";
 const theme = {
 	colors: {
 		primary: "#9F0039",
@@ -19,10 +20,17 @@ const theme = {
 	width: {
 		maxWidth: "1500px",
 	},
+	image: {
+		singleMoviePageImageWidth: "100px",
+		movieImageWidth: "250px",
+	},
 };
 const GlobalStyle = createGlobalStyle`
 body{
 	font-family: 'Roboto', sans-serif;
+	main{
+	min-height: 80vh;
+	}
 	a{
 		color: black;
 	}
@@ -43,7 +51,7 @@ function App() {
 						<Route path="/search/:search_term" element={<SearchMovies />} />
 						<Route path="/movie/:id" element={<SingleMoviePage />} />
 						<Route path="/" element={<Home />} />
-						<Route path="*" element={<p>not found</p>} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 					<Footer />
 				</ThemeProvider>

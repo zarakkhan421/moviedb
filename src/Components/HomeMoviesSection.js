@@ -1,50 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
 import Movie from "./Movie";
+import FetchFailed from "./FetchFailed";
 const Section = styled.section`
 	.movie-list {
 		display: flex;
 		justify-content: space-between;
 	}
 
-	/* display: flex;
-	flex-direction: column;
-	margin: 10px 40px;
-	h2 {
-		margin: 5px 0;
-	}
-	.section-list {
-		display: flex;
-		justify-content: space-between;
-		gap: 5px;
-		.section-item {
-			h2 {
-				font-size: 1rem;
-			}
-			img {
-				width: 250px;
-				height: auto;
-				object-fit: cover;
-			}
-			h2 {
-				margin: 5px 0;
-			}
-			.meta {
-				.ratings {
-					display: flex;
-					align-items: center;
-					svg {
-						margin-right: 5px;
-					}
-					span {
-						margin-top: 2px;
-					}
-				}
-			}
-		}
-	} */
 	.see-more {
 		margin-top: 5px;
 		font-size: 1.25rem;
@@ -59,37 +23,21 @@ const HomeMoviesSection = ({ sectionName, link, url }) => {
 			.then((data) => {
 				setMovies(data.results);
 				console.log(data.results);
-			});
+			})
+			.catch((err) => console.log(err));
 	}, [url]);
 	return (
 		<Section>
 			<h2>{sectionName}</h2>
 			<div className="movie-list">
-				{movies.slice(0, 5).map((movie) => (
-					<Movie movie={movie} />
-				))}
+				{movies.length > 0 ? (
+					movies
+						.slice(0, 5)
+						.map((movie) => <Movie key={movie.id} movie={movie} />)
+				) : (
+					<FetchFailed />
+				)}
 			</div>
-			{/* <h2>{sectionName}</h2>
-			<div className="section-list">
-				{movies.slice(0, 5).map((movie) => (
-					<Link to={`/movie/${movie.id}`}>
-						<div className="section-item" key={movie.id}>
-							<img
-								src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-								alt={movie.title}
-							/>
-							<h2>{movie.title}</h2>
-							<div className="meta">
-								<span className="ratings">
-									<AiFillStar />
-									<span>{movie.vote_average}</span>
-								</span>
-							</div>
-						</div>
-					</Link>
-				))}
-			</div> */}
-
 			<Link to={`/${link}`} className="see-more">
 				See More
 			</Link>

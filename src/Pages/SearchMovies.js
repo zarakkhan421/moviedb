@@ -7,6 +7,7 @@ import { AppContext } from "../Context/AppContext";
 import Movie from "../Components/Movie";
 import { FaHome } from "react-icons/fa";
 import styled from "styled-components";
+import FetchFailed from "../Components/FetchFailed";
 const SearchTop = styled.div`
 	a {
 		margin-top: 5px;
@@ -40,11 +41,11 @@ const SearchMovies = () => {
 					<h2>Search Data for "{params.search_term}"</h2>
 				</SearchTop>
 				<div className="sections">
-					{searchMovies.length > 0
-						? searchMovies.map((movie) => (
-								<Movie key={movie.id} movie={movie} />
-						  ))
-						: `seach data for ${search} not found`}
+					{searchMovies.length > 0 ? (
+						searchMovies.map((movie) => <Movie key={movie.id} movie={movie} />)
+					) : (
+						<FetchFailed />
+					)}
 				</div>
 			</MoviesSections>
 		</>

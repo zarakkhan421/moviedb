@@ -1,6 +1,7 @@
 import React from "react";
 import Movie from "../Movie";
 import styled from "styled-components";
+import FetchFailed from "../FetchFailed";
 
 export const MoviesSections = styled.main`
 	max-width: ${({ theme }) => theme.width.maxWidth};
@@ -43,11 +44,13 @@ function withMovies(WrappedComponent, pageTitle, url) {
 					<MoviesSections>
 						<h2>{pageTitle}</h2>
 						<div className="sections">
-							{this.state.movies.length > 0
-								? this.state.movies.map((movie) => (
-										<Movie key={movie.id} movie={movie} />
-								  ))
-								: "data not available"}
+							{this.state.movies.length > 0 ? (
+								this.state.movies.map((movie) => (
+									<Movie key={movie.id} movie={movie} />
+								))
+							) : (
+								<FetchFailed />
+							)}
 						</div>
 					</MoviesSections>
 				</WrappedComponent>

@@ -12,6 +12,8 @@ const MovieCard = styled.article`
 	}
 	h3 {
 		margin: 5px 0;
+		width: ${({ theme }) => theme.image.movieImageWidth};
+		word-break: break-all;
 	}
 	.meta {
 		.ratings {

@@ -34,10 +34,20 @@ const Nav = styled.nav`
 				padding: 7.5px 10px;
 				border-radius: 5px;
 			}
+			input:focus {
+				padding: 7.5px 12px;
+				outline-style: solid;
+				outline-width: 2px;
+				outline-color: #8383839e;
+			}
 			svg {
 				width: 2.5rem;
 				height: 2.5rem;
 				margin-top: 5px;
+				cursor: pointer;
+			}
+			svg:active {
+				color: #d9d9d9;
 			}
 		}
 	}

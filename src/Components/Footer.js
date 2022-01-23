@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../assets/images/moviedb.png";
 const FooterSection = styled.footer`
 	height: 20rem;
-	background-color: lightgray;
+	background-color: ${({ theme }) => theme.colors.primary};
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-
+	color: white;
 	.left-section {
 		.logo {
 			img {
@@ -23,7 +22,7 @@ const Footer = () => {
 		<FooterSection>
 			<div className="left-section">
 				<div className="logo">
-					<img alt="moviedb logo" src={Logo} />
+					<h1>MDB</h1>
 				</div>
 				<div>
 					<span>Movie DB App</span>
