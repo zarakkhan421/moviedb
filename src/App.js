@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import PopularMovies from "./Pages/PopularMovies";
@@ -24,18 +25,50 @@ const theme = {
 		singleMoviePageImageWidth: "100px",
 		movieImageWidth: "250px",
 	},
+	screenSizes: {
+		sm: "640px",
+		md: "784px",
+		lg: "1024px",
+		xl: "1280px",
+		xxl: "1536px",
+	},
 };
 const GlobalStyle = createGlobalStyle`
+*{
+	box-sizing: border-box;
+}
 body{
 	font-family: 'Roboto', sans-serif;
-	main{
-	min-height: 80vh;
-	}
 	a{
 		color: black;
 	}
-}
-`;
+
+	
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.mobile})
+	 {
+		 main {
+			min-width: ${({ theme }) => theme.screenSizes.mobile};
+		}
+		
+
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.tablet})
+	 {
+		 main {
+			min-width: ${({ theme }) => theme.screenSizes.tablet};
+		}
+		
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.laptop})
+	 {
+		 main {
+			min-width: ${({ theme }) => theme.screenSizes.laptop};
+		}
+		
+	}
+}`;
+export const Container = styled.main``;
+
 function App() {
 	return (
 		<>

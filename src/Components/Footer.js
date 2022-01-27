@@ -6,6 +6,7 @@ const FooterSection = styled.footer`
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
+	padding: 1rem 2rem;
 	color: white;
 	.left-section {
 		.logo {
@@ -25,7 +26,7 @@ const Footer = () => {
 					<h1>MDB</h1>
 				</div>
 				<div>
-					<span>Movie DB App</span>
+					<span>Movie DB React App that consumes TMDP Api</span>
 				</div>
 			</div>
 		</FooterSection>

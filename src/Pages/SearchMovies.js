@@ -9,6 +9,7 @@ import { FaHome } from "react-icons/fa";
 import styled from "styled-components";
 import FetchFailed from "../Components/FetchFailed";
 const SearchTop = styled.div`
+	margin: 1rem 0.5rem;
 	a {
 		margin-top: 5px;
 		display: flex;

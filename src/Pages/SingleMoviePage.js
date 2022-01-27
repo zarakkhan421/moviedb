@@ -6,44 +6,127 @@ import { BsFileEarmarkImage, BsFillCalendarDateFill } from "react-icons/bs";
 import FetchFailed from "../Components/FetchFailed";
 import { AiFillFlag, AiFillStar } from "react-icons/ai";
 import { MdCategory } from "react-icons/md";
-const MovieDetails = styled.article`
+const MovieDetails = styled.main`
 	display: flex;
 	justify-content: center;
 	.overlay {
-		width: calc(500 * 3.5px);
-		height: calc(281 * 3.5px);
+		width: 100%;
+		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 	}
 	.backdrop {
-		width: calc(500 * 3.5px);
-		height: calc(281 * 3.5px);
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.sm}) {
+		.overlay {
+			min-width: ${({ theme }) => theme.screenSizes.sm};
+			height: 100%;
+		}
+		.backdrop {
+			min-width: ${({ theme }) => theme.screenSizes.sm};
+			height: auto;
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.md}) {
+		.overlay {
+			min-width: ${({ theme }) => theme.screenSizes.md};
+			height: 100%;
+		}
+		.backdrop {
+			min-width: ${({ theme }) => theme.screenSizes.md};
+			height: auto;
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.lg}) {
+		.overlay {
+			min-width: ${({ theme }) => theme.screenSizes.lg};
+			height: 100%;
+		}
+		.backdrop {
+			min-width: ${({ theme }) => theme.screenSizes.lg};
+			height: auto;
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.xl}) {
+		.overlay {
+			min-width: ${({ theme }) => theme.screenSizes.xl};
+			height: 100%;
+		}
+		.backdrop {
+			min-width: ${({ theme }) => theme.screenSizes.xl};
+			height: auto;
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.xxl}) {
+		.overlay {
+			min-width: ${({ theme }) => theme.screenSizes.xxl};
+			height: 100%;
+		}
+		.backdrop {
+			min-width: ${({ theme }) => theme.screenSizes.xxl};
+			height: auto;
+		}
 	}
 	.movie-content {
 		display: flex;
-		width: calc(500 * 3px);
-		height: calc(281 * 3px);
+		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-		justify-content: space-evenly;
+		width: 100%;
+		height: 100%;
 		column-gap: 20px;
+		margin: 2.5rem 1rem;
 		.poster {
 			img {
-				width: 380px;
+				width: 200px;
 				height: auto;
 				object-fit: cover;
 				border-radius: 5px;
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.sm}) {
+			.poster {
+				img {
+					width: 250px;
+				}
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.md}) {
+			.poster {
+				img {
+					width: 250px;
+				}
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.lg}) {
+			.poster {
+				img {
+					width: 300px;
+				}
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.xl}) {
+			.poster {
+				img {
+					width: 350px;
+				}
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.xxl}) {
+			.poster {
+				img {
+					width: 350px;
+				}
 			}
 		}
 		.details {
 			background-color: rgba(255, 255, 255, 0.8);
 			border-radius: 5px;
 			padding: 20px 30px;
-			width: 900px;
 			h1 {
 				margin: 10px 0;
 				font-weight: 400;
@@ -52,6 +135,7 @@ const MovieDetails = styled.article`
 			}
 			.meta {
 				display: flex;
+				flex-wrap: wrap;
 				.meta-item {
 					display: flex;
 					margin-right: 5px;
@@ -98,9 +182,9 @@ const MovieDetails = styled.article`
 				}
 			}
 			.cast {
-				height: 400px;
+				height: 200px;
 				display: grid;
-				grid-template-columns: repeat(5, 1fr);
+				grid-template-columns: repeat(3, 1fr);
 				overflow-y: scroll;
 				scrollbar-color: rebeccapurple green;
 				scrollbar-width: thin;
@@ -151,6 +235,86 @@ const MovieDetails = styled.article`
 					}
 				}
 			}
+
+			@media screen and (min-width: ${({ theme }) => theme.screenSizes.sm}) {
+				.cast {
+					height: 200px;
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+			@media screen and (min-width: ${({ theme }) => theme.screenSizes.md}) {
+				.cast {
+					height: 250px;
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+			@media screen and (min-width: ${({ theme }) => theme.screenSizes.lg}) {
+				.cast {
+					height: 300px;
+					grid-template-columns: repeat(4, 1fr);
+				}
+			}
+			@media screen and (min-width: ${({ theme }) => theme.screenSizes.xl}) {
+				.cast {
+					height: 350px;
+					grid-template-columns: repeat(4, 1fr);
+				}
+			}
+			@media screen and (min-width: ${({ theme }) => theme.screenSizes.xxl}) {
+				.cast {
+					height: 400px;
+					grid-template-columns: repeat(5, 1fr);
+				}
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.sm}) {
+			.details {
+				width: 600px;
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.md}) {
+			.details {
+				width: 600px;
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.lg}) {
+			.details {
+				width: 700px;
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.xl}) {
+			.details {
+				width: 800px;
+			}
+		}
+		@media screen and (min-width: ${({ theme }) => theme.screenSizes.xxl}) {
+			.details {
+				width: 900px;
+			}
+		}
+	}
+
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.sm}) {
+		.movie-content {
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.md}) {
+		.movie-content {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.lg}) {
+		.movie-content {
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.xl}) {
+		.movie-content {
+		}
+	}
+	@media screen and (min-width: ${({ theme }) => theme.screenSizes.xxl}) {
+		.movie-content {
 		}
 	}
 `;
@@ -181,102 +345,99 @@ const SingleMoviePage = () => {
 	}, [movie_id]);
 
 	return (
-		<main>
-			<MovieDetails>
-				{movieCasts.length > 0 ? (
-					<div
-						className="backdrop"
-						style={{
-							backgroundImage: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`,
-							backgroundRepeat: "no-repeat",
-							backgroundSize: "contain",
-						}}
-					>
-						<div className="overlay">
-							<div className="movie-content">
-								<div className="poster">
-									<img
-										src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-										alt={movie.title}
-									/>
+		<MovieDetails>
+			{movieCasts.length > 0 ? (
+				<div
+					className="backdrop"
+					style={{
+						backgroundImage: `url("https://image.tmdb.org/t/p/w500${movie.backdrop_path}")`,
+						backgroundRepeat: "no-repeat",
+						backgroundSize: "cover",
+					}}
+				>
+					<div className="overlay">
+						<div className="movie-content">
+							<div className="poster">
+								<img
+									src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+									alt={movie.title}
+								/>
+							</div>
+							<div className="details">
+								<h1>{movie.title}</h1>
+								<div className="meta">
+									<div className="meta-item vote-average">
+										<AiFillStar />
+										<span>{movie.vote_average}</span>
+									</div>
+									<div className="meta-item genres">
+										<MdCategory />
+										{movie.genres
+											? movie.genres.map((genre) => (
+													<div className="genre-item" key={genre.id}>
+														{genre.name}
+													</div>
+											  ))
+											: "not found "}
+									</div>
+									<div className="meta-item languages">
+										<AiFillFlag />
+										{movie.genres
+											? movie.spoken_languages.map((language, index) => (
+													<div className="language-item" key={index}>
+														{language.english_name}
+													</div>
+											  ))
+											: "not found "}
+									</div>
+									<div className="meta-item date">
+										<BsFillCalendarDateFill />
+										<span>{movie.release_date}</span>
+									</div>
 								</div>
-								<div className="details">
-									<h1>{movie.title}</h1>
-									<div className="meta">
-										<div className="meta-item vote-average">
-											<AiFillStar />
-											<span>{movie.vote_average}</span>
-										</div>
-										<div className="meta-item genres">
-											<MdCategory />
-											{movie.genres
-												? movie.genres.map((genre) => (
-														<div className="genre-item" key={genre.id}>
-															{genre.name}
+								<div className="subtitle">{movie.tagline}</div>
+								<div className="overview">
+									<h4>Overview</h4>
+									<p>{movie.overview}</p>
+								</div>
+								<div className="cast">
+									{movieCasts
+										? movieCasts
+												.sort(
+													(x, y) => Number(y.popularity) - Number(x.popularity)
+												)
+												.slice(0, 18)
+												.map((cast, index) => (
+													<div key={index} className="cast-item">
+														<div className="image">
+															{cast.profile_path ? (
+																<img
+																	src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
+																	alt={movie.title}
+																/>
+															) : (
+																<BsFileEarmarkImage
+																	style={{
+																		backgroundColor: "#bfbfbf",
+																		borderRadius: "5px",
+																	}}
+																/>
+															)}
 														</div>
-												  ))
-												: "not found "}
-										</div>
-										<div className="meta-item languages">
-											<AiFillFlag />
-											{movie.genres
-												? movie.spoken_languages.map((language, index) => (
-														<div className="language-item" key={index}>
-															{language.english_name}
-														</div>
-												  ))
-												: "not found "}
-										</div>
-										<div className="meta-item date">
-											<BsFillCalendarDateFill />
-											<span>{movie.release_date}</span>
-										</div>
-									</div>
-									<div className="subtitle">{movie.tagline}</div>
-									<div className="overview">
-										<h4>Overview</h4>
-										<p>{movie.overview}</p>
-									</div>
-									<div className="cast">
-										{movieCasts
-											? movieCasts
-													.sort(
-														(x, y) =>
-															Number(y.popularity) - Number(x.popularity)
-													)
-													.slice(0, 18)
-													.map((cast, index) => (
-														<div key={index} className="cast-item">
-															<div className="image">
-																{cast.profile_path ? (
-																	<img
-																		src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
-																		alt={movie.title}
-																	/>
-																) : (
-																	<BsFileEarmarkImage
-																		style={{
-																			backgroundColor: "#bfbfbf",
-																			borderRadius: "5px",
-																		}}
-																	/>
-																)}
-															</div>
-															<div className="actor">{cast.name}</div>
-															<div className="character">{cast.character}</div>
-														</div>
-													))
-											: "not found"}
-									</div>
+														<div className="actor">{cast.name}</div>
+														<div className="character">{cast.character}</div>
+													</div>
+												))
+										: "not found"}
 								</div>
 							</div>
 						</div>
 					</div>
-				) : (
-					<FetchFailed />
-				)}
-			</MovieDetails>
-		</main>
+				</div>
+			) : (
+				<FetchFailed />
+			)}
+		</MovieDetails>
 	);
 };
 

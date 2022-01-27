@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 import Movie from "./Movie";
 import FetchFailed from "./FetchFailed";
 const Section = styled.section`
+	h2 {
+		margin: 1rem 2.5rem;
+	}
 	.movie-list {
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 0 2rem;
 	}
 
 	.see-more {
+		margin: 0.5rem 2.5rem;
 		margin-top: 5px;
 		font-size: 1.25rem;
 	}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const MovieCard = styled.article`
 	display: flex;
 	flex-direction: column;
+	margin: 0.5rem 0.5rem;
 	img {
 		width: 250px;
 		height: auto;
