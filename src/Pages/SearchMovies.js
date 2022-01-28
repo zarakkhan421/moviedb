@@ -29,7 +29,7 @@ const SearchTop = styled.div`
 	}
 `;
 const SearchMovies = () => {
-	const { search, searchMovies } = useContext(AppContext);
+	const { searchMovies } = useContext(AppContext);
 	let params = useParams();
 	return (
 		<>

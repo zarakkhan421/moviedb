@@ -1,7 +1,7 @@
 import React from "react";
 import withMovies from "../Components/HigherOrderComponents/withMovies";
 
-const TopRatedMovies = ({ movies, children }) => {
+const TopRatedMovies = ({ children }) => {
 	return <>{children}</>;
 };
 
